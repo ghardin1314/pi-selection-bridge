@@ -3,8 +3,9 @@
   "displayName": "Pi Selection Bridge",
   "description": "Bridges the latest editor selection from Cursor/VS Code to Pi running in an external terminal.",
   "version": "0.0.1",
-  "publisher": "garrett",
+  "publisher": "ghardin1314",
   "private": true,
+  "license": "MIT",
   "engines": {
     "vscode": "^1.85.0"
   },
@@ -14,7 +15,8 @@
   "files": [
     "dist/**/*",
     "package.json",
-    "README.md"
+    "README.md",
+    "LICENSE"
   ],
   "activationEvents": [
     "onStartupFinished"

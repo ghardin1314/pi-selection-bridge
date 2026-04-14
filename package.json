@@ -2,6 +2,7 @@
   "name": "pi-selection-bridge",
   "version": "0.1.0",
   "private": true,
+  "license": "MIT",
   "description": "Pi package for bridging editor selections from Cursor/VS Code into Pi running in an external terminal.",
   "repository": {
     "type": "git",
@@ -15,7 +16,8 @@
     "extensions/**/*",
     "assets/**/*",
     "vscode-extension/**/*",
-    "README.md"
+    "README.md",
+    "LICENSE"
   ],
   "peerDependencies": {
     "@mariozechner/pi-coding-agent": "*"

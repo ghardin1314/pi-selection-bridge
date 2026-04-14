@@ -1,25 +1,26 @@
 # Pi Selection Bridge
 
-A single Pi package that includes:
-- the Pi extension
-- the Cursor/VS Code extension source
-- a bundled `.vsix` for editor install
+Use your current Cursor or VS Code selection as one-shot context for the next Pi prompt, even when Pi is running in a separate terminal.
 
-## End-user install
+No marketplace publishing required: this repo ships as a Pi package and includes a bundled editor `.vsix`.
 
-Install the Pi package:
+## Install
+
+### 1. Install the Pi package
 
 ```bash
 pi install git:github.com/ghardin1314/pi-selection-bridge
 ```
 
-For local testing from this checkout:
+Or from a local checkout:
 
 ```bash
-pi install /Users/garrett/Documents/github/experiments/vscode-highlight
+pi install /path/to/pi-selection-bridge
 ```
 
-Then inside Pi:
+### 2. Install the bundled editor extension
+
+Inside Pi:
 
 ```text
 /selection-bridge install cursor
@@ -31,21 +32,30 @@ Or for VS Code:
 /selection-bridge install vscode
 ```
 
-Then:
-- reload the editor window
-- select code in the editor
-- send your next Pi prompt
+### 3. Reload the editor window
 
-## Pi commands
+Then:
+- select code in the editor
+- return to Pi
+- send your next prompt
+
+## Commands
 
 - `/selection-bridge status`
 - `/selection-bridge doctor`
 - `/selection-bridge install cursor`
 - `/selection-bridge install vscode`
 
-## Local dev
+## How it works
 
-Install editor-extension deps once:
+- the editor extension writes the latest non-empty selection to `~/.pi/bridge/<workspace-hash>/selection.json`
+- the Pi extension polls for that file
+- Pi shows a footer indicator when a selection is available
+- on the next prompt, Pi injects the selection once and deletes the file
+
+## Development
+
+Install editor-extension dependencies once:
 
 ```bash
 cd vscode-extension
@@ -58,16 +68,11 @@ From the repo root:
 npm run watch:vscode
 ```
 
-When ready to test in Cursor:
+To rebuild and install into Cursor:
 
 ```bash
 npm run push:cursor
 ```
-
-That will:
-- build the editor extension
-- package `assets/pi-selection-bridge.vsix`
-- install it into Cursor
 
 Then:
 - reload Cursor
@@ -75,6 +80,10 @@ Then:
 
 ## Repo layout
 
-- `extensions/` — Pi extension package contents
+- `extensions/` — Pi extension
 - `assets/pi-selection-bridge.vsix` — bundled editor extension
 - `vscode-extension/` — editor extension source
+
+## License
+
+MIT
