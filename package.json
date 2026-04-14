@@ -1,0 +1,36 @@
+{
+  "name": "pi-selection-bridge",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Pi package for bridging editor selections from Cursor/VS Code into Pi running in an external terminal.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ghardin1314/pi-selection-bridge.git"
+  },
+  "homepage": "https://github.com/ghardin1314/pi-selection-bridge",
+  "keywords": [
+    "pi-package"
+  ],
+  "files": [
+    "extensions/**/*",
+    "assets/**/*",
+    "vscode-extension/**/*",
+    "README.md"
+  ],
+  "peerDependencies": {
+    "@mariozechner/pi-coding-agent": "*"
+  },
+  "pi": {
+    "extensions": [
+      "./extensions"
+    ]
+  },
+  "scripts": {
+    "watch:vscode": "npm --prefix ./vscode-extension run watch",
+    "build:vscode": "npm --prefix ./vscode-extension run compile",
+    "bundle:vscode": "npm --prefix ./vscode-extension run package && mkdir -p ./assets && cp ./vscode-extension/pi-selection-bridge.vsix ./assets/pi-selection-bridge.vsix",
+    "install:cursor": "npm run bundle:vscode && cursor --install-extension ./assets/pi-selection-bridge.vsix --force",
+    "push:cursor": "npm run install:cursor",
+    "install:vscode": "npm run bundle:vscode && code --install-extension ./assets/pi-selection-bridge.vsix --force"
+  }
+}

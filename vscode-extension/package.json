@@ -1,0 +1,48 @@
+{
+  "name": "pi-selection-bridge-vscode",
+  "displayName": "Pi Selection Bridge",
+  "description": "Bridges the latest editor selection from Cursor/VS Code to Pi running in an external terminal.",
+  "version": "0.0.1",
+  "publisher": "garrett",
+  "private": true,
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "files": [
+    "dist/**/*",
+    "package.json",
+    "README.md"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "piSelectionBridge.syncNow",
+        "title": "Pi Selection Bridge: Sync Selection Now"
+      },
+      {
+        "command": "piSelectionBridge.openBridgeFolder",
+        "title": "Pi Selection Bridge: Open Bridge Folder"
+      }
+    ]
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "npm run compile && npx @vscode/vsce package --allow-missing-repository --out pi-selection-bridge.vsix",
+    "install:cursor": "npm run package && cursor --install-extension pi-selection-bridge.vsix --force",
+    "push:cursor": "npm run install:cursor"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.3",
+    "@types/vscode": "^1.85.0",
+    "@vscode/vsce": "^3.6.2",
+    "typescript": "^5.8.3"
+  }
+}

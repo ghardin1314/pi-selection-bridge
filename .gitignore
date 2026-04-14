@@ -1,0 +1,6 @@
+node_modules/
+package-lock.json
+assets/*.tmp
+vscode-extension/node_modules/
+vscode-extension/dist/
+vscode-extension/*.vsix
