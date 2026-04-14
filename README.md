@@ -4,6 +4,8 @@ Use your current Cursor or VS Code selection as one-shot context for the next Pi
 
 No marketplace publishing required: this repo ships as a Pi package and includes a bundled editor `.vsix`.
 
+> Warning: this was fully vibe coded. Use at your own discretion.
+
 ## Install
 
 ### 1. Install the Pi package
