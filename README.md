@@ -48,6 +48,26 @@ Then:
 - `/selection-bridge install cursor`
 - `/selection-bridge install vscode`
 
+## Uninstall
+
+Remove the editor extension from Cursor:
+
+```bash
+cursor --uninstall-extension ghardin1314.pi-selection-bridge-vscode
+```
+
+If you installed an older dev build first, you may need:
+
+```bash
+cursor --uninstall-extension garrett.pi-selection-bridge-vscode
+```
+
+Remove the Pi package:
+
+```bash
+pi remove git:github.com/ghardin1314/pi-selection-bridge
+```
+
 ## How it works
 
 - the editor extension writes the latest non-empty selection to `~/.pi/bridge/<workspace-hash>/selection.json`
